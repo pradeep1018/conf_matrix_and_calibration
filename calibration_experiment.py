@@ -64,7 +64,14 @@ def _run_experiment(y_h=None, model_probs=None, y_true=None, **kwargs):
         writer.writerows(acc_data)
     """
     print(header_acc)
-    print(acc_data)
+    err_data = np.array(acc_data)
+    err_data = np.subtract(1,err_data)
+    mean_err = np.mean(err_data, axis = 0)
+    std_err = np.std(err_data, axis = 0)
+    for i in range(len(header_acc)):
+        print('Mean of error for ',header_acc[i],' is', mean_err[i])
+        print('Standard deviation of error for ',header_acc[i],' is', std_err[i])
+    #print(acc_data)
     header_cal = ['calibration method', 'metric', 'model', 'comb']
     """
     with open(output_file_calibration, 'w', newline='') as f:
@@ -72,8 +79,8 @@ def _run_experiment(y_h=None, model_probs=None, y_true=None, **kwargs):
         writer.writerow(header_cal)
         writer.writerows(cal_data)
     """
-    print(header_cal)
-    print(cal_data)
+    #print(header_cal)
+    #print(cal_data)
 
 
 def run_experiment_cifar10(out_fpath=None, experiment_args=None, seed=0):
