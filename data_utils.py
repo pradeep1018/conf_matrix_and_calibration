@@ -11,7 +11,7 @@ def load_CIFAR10H(model_name):
     """
     dirname = os.path.dirname(__file__)
     if model_name == 'r_low_acc':
-        data_path = os.path.join(dirname, 'data/cifar10h/human_model_truth_cifar10h.csv')
+        data_path = os.path.join(dirname, 'cifar10h/human_model_truth_cifar10h.csv')
         data = np.genfromtxt(data_path, delimiter=',')
 
         human_counts = data[:, :10]
@@ -20,7 +20,7 @@ def load_CIFAR10H(model_name):
 
         true_labels -= 1  # data has labels 1-10 -- shifting so that they are zero-indexed.
     else:
-        data_path = os.path.join(dirname, f'data/cifar10h/{model_name}.csv')
+        data_path = os.path.join(dirname, f'cifar10h/{model_name}.csv')
         data = np.genfromtxt(data_path, delimiter=',')
 
         true_labels = data[:, 0]
@@ -39,17 +39,17 @@ def load_CIFAR10H_individual(model_name):
 
     # ---- Model data
     if model_name == 'r_low_acc':
-        data_path = os.path.join(dirname, 'data/cifar10h/human_model_truth_cifar10h.csv')
+        data_path = os.path.join(dirname, 'cifar10h/human_model_truth_cifar10h.csv')
         data = np.genfromtxt(data_path, delimiter=',')
         model_probs = data[:, 10:20]
     else:
-        data_path = os.path.join(dirname, f'data/cifar10h/{model_name}.csv')
+        data_path = os.path.join(dirname, f'cifar10h/{model_name}.csv')
         data = np.genfromtxt(data_path, delimiter=',')
         model_probs = data[:, 11:]
 
     # ----- Human data
     # Load raw human-generated labels
-    human_data_path = os.path.join(dirname, 'data/cifar10h/cifar10h-raw.csv')
+    human_data_path = os.path.join(dirname, 'cifar10h/cifar10h-raw.csv')
     human_data = pd.read_csv(human_data_path)
     # drop attention checks
     human_data = human_data[human_data['is_attn_check'] == 0]

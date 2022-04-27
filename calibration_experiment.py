@@ -149,5 +149,5 @@ if __name__ == '__main__':
     out_fpath = './output/cifar10h/final/fully_sup_CI/'
     run_experiment_cifar10(out_fpath=out_fpath, experiment_args=args, seed=seed)
 
-    out_fpath = './output/noisy_imagenet/final/fully_sup_CI/'
-    run_experiment_noisy_imagenet(out_fpath=out_fpath, experiment_args=args, seed=seed)
+    #out_fpath = './output/noisy_imagenet/final/fully_sup_CI/'
+    #run_experiment_noisy_imagenet(out_fpath=out_fpath, experiment_args=args, seed=seed)
