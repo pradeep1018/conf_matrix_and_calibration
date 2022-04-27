@@ -1,6 +1,3 @@
-import sys
-sys.path.insert(0, '../')
-
 from data_utils import *
 from utils import *
 from combination_methods import *
