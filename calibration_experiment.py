@@ -146,7 +146,7 @@ if __name__ == '__main__':
             'seed': seed
             }
 
-    out_fpath = './output/cifar10h/final/fully_sup_CI/'
+    out_fpath = '/'
     run_experiment_cifar10(out_fpath=out_fpath, experiment_args=args, seed=seed)
 
     #out_fpath = './output/noisy_imagenet/final/fully_sup_CI/'
