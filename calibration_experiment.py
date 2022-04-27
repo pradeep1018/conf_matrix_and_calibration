@@ -18,8 +18,8 @@ def _run_experiment(y_h=None, model_probs=None, y_true=None, **kwargs):
     test_size = kwargs.pop('test_size', 0.3)
     calibration_methods = kwargs.pop('calibration_methods', ['none'])
     calibration_metrics = kwargs.pop('calibration_metrics', {'ECE': get_ECE})
-    output_file_acc = kwargs.pop('output_file_acc', './acc.csv')
-    output_file_calibration = kwargs.pop('output_file_calibration', './cal.csv')
+    #output_file_acc = kwargs.pop('output_file_acc', './acc.csv')
+    #output_file_calibration = kwargs.pop('output_file_calibration', './cal.csv')
 
     acc_data = []
     cal_data = []
@@ -57,17 +57,21 @@ def _run_experiment(y_h=None, model_probs=None, y_true=None, **kwargs):
 
     # Save data to CSV
     header_acc = ['human', 'model'] + [f'comb {cal_m}' for cal_m in calibration_methods]
+    """
     with open(output_file_acc, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(header_acc)
         writer.writerows(acc_data)
+    """
     print(header_acc)
     print(acc_data)
     header_cal = ['calibration method', 'metric', 'model', 'comb']
+    """
     with open(output_file_calibration, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(header_cal)
         writer.writerows(cal_data)
+    """
     print(header_cal)
     print(cal_data)
 
@@ -76,12 +80,12 @@ def run_experiment_cifar10(out_fpath=None, experiment_args=None, seed=0):
     model_names = ['r_low_acc', 'resnet-110', 'preresnet-110', 'densenet-bc-L190-k40']
     for model_name in tqdm(model_names, desc='Models', leave=True):
         # Specify output files
-        output_file_acc = out_fpath + f'{model_name}_accuracy.csv'
-        output_file_calibration = out_fpath + f'{model_name}_calibration.csv'
-        assert not os.path.exists(output_file_acc), 'Output filepath already exists'
-        assert not os.path.exists(output_file_calibration), 'Output filepath already exists'
-        experiment_args['output_file_acc'] = output_file_acc
-        experiment_args['output_file_calibration'] = output_file_calibration
+        #output_file_acc = out_fpath + f'{model_name}_accuracy.csv'
+        #output_file_calibration = out_fpath + f'{model_name}_calibration.csv'
+        #assert not os.path.exists(output_file_acc), 'Output filepath already exists'
+        #assert not os.path.exists(output_file_calibration), 'Output filepath already exists'
+        #experiment_args['output_file_acc'] = output_file_acc
+        #experiment_args['output_file_calibration'] = output_file_calibration
 
         # Load data
         human_counts, model_probs, y_true = load_CIFAR10H(model_name)
