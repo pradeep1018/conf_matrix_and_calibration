@@ -61,11 +61,15 @@ def _run_experiment(y_h=None, model_probs=None, y_true=None, **kwargs):
         writer = csv.writer(f)
         writer.writerow(header_acc)
         writer.writerows(acc_data)
+    print(header_acc)
+    print(acc_data)
     header_cal = ['calibration method', 'metric', 'model', 'comb']
     with open(output_file_calibration, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(header_cal)
         writer.writerows(cal_data)
+    print(header_cal)
+    print(cal_data)
 
 
 def run_experiment_cifar10(out_fpath=None, experiment_args=None, seed=0):
