@@ -1,5 +1,7 @@
 # Combining Human Predictions with Model Probabilities via Confusion Matrices and Calibration
 
+Note: This repo is forked from [[GavinKerrigan/conf_matrix_and_calibration](GavinKerrigan/conf_matrix_and_calibration)]
+
 This repo contains the code for our NeurIPS 2021 paper, Combining Human Predictions with Model Probabilities via Confusion Matrices and Calibration [[arxiv](https://arxiv.org/abs/2109.14591)].
 
 # Project Structure
